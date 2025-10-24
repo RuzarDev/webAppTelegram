@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { ref } from "vue"
-
+import {onMounted, ref} from "vue"
+import {useTelegram} from "@/hooks/useTelegram.ts";
+const {tg,sendData} = useTelegram()
 interface TransportForm {
   carNumber: string
   carWeight: number | null
@@ -39,6 +40,10 @@ function addItem() {
 function removeItem(index: number) {
   arrayOfItems.value.splice(index, 1)
 }
+onMounted(() => {
+  tg?.ready()
+  tg?.expand() // делает окно во весь экран
+})
 </script>
 
 <template>
@@ -101,6 +106,9 @@ function removeItem(index: number) {
       <a-button type="primary" @click="addItem">Добавить товар</a-button>
     </a-card>
   </div>
+  <a-button type="primary" class="mt-4 w-full" @click="sendData(form)">
+    Отправить в Telegram
+  </a-button>
 </template>
 
 <style scoped>

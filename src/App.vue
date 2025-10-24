@@ -104,11 +104,12 @@ onMounted(() => {
       </div>
 
       <a-button type="primary" @click="addItem">Добавить товар</a-button>
+      <a-button type="primary" class="mt-4 w-full" @click="sendData(form)">
+        Отправить в Telegram
+      </a-button>
     </a-card>
   </div>
-  <a-button type="primary" class="mt-4 w-full" @click="sendData(form)">
-    Отправить в Telegram
-  </a-button>
+
 </template>
 
 <style scoped>

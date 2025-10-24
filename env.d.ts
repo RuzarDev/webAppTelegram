@@ -1,3 +1,4 @@
+// src/env.d.ts
 export {}
 
 declare global {
@@ -15,11 +16,20 @@ declare global {
     }
   }
 
-  interface TelegramWindow extends Window {
-    Telegram: {
+  interface Window {
+    Telegram?: {
       WebApp: TelegramWebApp
     }
   }
+  interface ImportMetaEnv {
+    readonly BASE_URL: string
+    readonly MODE: string
+    readonly DEV: boolean
+    readonly PROD: boolean
+  }
 
-  const window: TelegramWindow
+  interface ImportMeta {
+    readonly env: ImportMetaEnv
+  }
+
 }

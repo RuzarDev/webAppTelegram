@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {onMounted, ref} from "vue"
 import {useTelegram} from "@/hooks/useTelegram.ts";
-const {tg,sendData,close} = useTelegram()
+const {tg,sendMockData,close} = useTelegram()
 interface TransportForm {
   carNumber: string
   carWeight: number | null
@@ -104,7 +104,7 @@ onMounted(() => {
       </div>
 
       <a-button type="primary" @click="addItem">Добавить товар</a-button>
-      <a-button type="primary" class="mt-4 w-full" @click="sendData({name:'hello'})">
+      <a-button type="primary" class="mt-4 w-full" @click="sendMockData">
         Отправить в Telegram
       </a-button>
     <a-button @click="close">

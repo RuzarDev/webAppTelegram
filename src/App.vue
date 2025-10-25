@@ -104,7 +104,7 @@ onMounted(() => {
       </div>
 
       <a-button type="primary" @click="addItem">Добавить товар</a-button>
-      <a-button type="primary" class="mt-4 w-full" @click="sendData({ ...form.value, items: arrayOfItems.value })">
+      <a-button type="primary" class="mt-4 w-full" @click="sendData({name:'hello'})">
         Отправить в Telegram
       </a-button>
     <a-button @click="close">

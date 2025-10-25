@@ -104,12 +104,12 @@ onMounted(() => {
       </div>
 
       <a-button type="primary" @click="addItem">Добавить товар</a-button>
-      <a-button type="primary" class="mt-4 w-full" @click="sendData(form)">
+      <a-button type="primary" class="mt-4 w-full" @click="sendData({ ...form.value, items: arrayOfItems.value })">
         Отправить в Telegram
       </a-button>
-      <a-button type="primary" class="mt-4 w-full" @click="close">
-        Отправить в Telegram
-      </a-button>
+    <a-button @click="close">
+      Закрыть telegram
+    </a-button>
     </a-card>
   </div>
 

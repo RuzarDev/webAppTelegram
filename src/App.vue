@@ -107,9 +107,9 @@ onMounted(() => {
       <a-button type="primary" class="mt-4 w-full" @click="sendMockData">
         Отправить в Telegram
       </a-button>
-    <a-button @click="close">
-      Закрыть telegram
-    </a-button>
+      <a-button @click="close">
+        Закрыть telegram
+      </a-button>
     </a-card>
   </div>
 

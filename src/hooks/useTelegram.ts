@@ -3,6 +3,7 @@ export function useTelegram() {
   const tg = window.Telegram?.WebApp
 
   function sendMockData() {
+    tg?.sendData('ping')
     const mockData = {
       carNumber: "171ADX13",
       carWeight: 9000,

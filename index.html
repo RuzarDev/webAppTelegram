@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>WebApp Test</title>
+    <meta charset="UTF-8" />
+    <title>WebApp Debug Form</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-<h2>Форма</h2>
+<h2>Форма WebApp</h2>
 <form id="form">
     <label>Имя: <input name="name" /></label><br><br>
     <label>Комментарий: <input name="comment" /></label><br><br>
@@ -21,7 +21,9 @@
         e.preventDefault();
         const form = Object.fromEntries(new FormData(e.target));
 
-        const res = await fetch("https://spacelogistictelegrambot.onrender.com/api/form", {
+        console.log("Отправка формы:", form);
+
+        const res = await fetch("https://your-backend-url.onrender.com/api/form", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({
@@ -31,7 +33,7 @@
         });
 
         const data = await res.json();
-        alert(data.message || "Отправлено!");
+        alert(data.message || "Ошибка");
         tg.close();
     });
 </script>

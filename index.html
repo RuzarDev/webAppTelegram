@@ -21,7 +21,7 @@
         e.preventDefault();
         const form = Object.fromEntries(new FormData(e.target));
 
-        const res = await fetch("https://your-server.com/api/form", {
+        const res = await fetch("http://0.0.0.0:8080/api/form", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({

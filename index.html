@@ -1,41 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <title>WebApp Debug Form</title>
+    <meta charset="UTF-8">
+    <title>Telegram WebApp Test</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+        }
+        h2 {
+            color: #222;
+        }
+        button {
+            padding: 10px 18px;
+            font-size: 16px;
+            background: #2ea5ff;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+    </style>
 </head>
+
 <body>
-<h2>Форма WebApp</h2>
-<form id="form">
-    <label>Имя: <input name="name" /></label><br><br>
-    <label>Комментарий: <input name="comment" /></label><br><br>
-    <button type="submit">Отправить</button>
-</form>
+<h2>🚀 Тест WebApp</h2>
+<p>Нажмите кнопку ниже, чтобы отправить данные в Telegram</p>
+
+<button id="send">Отправить ping</button>
 
 <script>
-    const tg = window.Telegram.WebApp;
-    tg.expand();
+    const tg = window.Telegram?.WebApp;
+    tg?.ready();
 
-    document.getElementById("form").addEventListener("submit", async (e) => {
-        e.preventDefault();
-        const form = Object.fromEntries(new FormData(e.target));
+    // Отображаем системную кнопку Telegram
+    tg?.MainButton.setText("Отправить из WebApp");
+    tg?.MainButton.show();
 
-        console.log("Отправка формы:", form);
-
-        const res = await fetch("https://spacelogistictelegrambot.onrender.com/api/form", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                initData: tg.initData,
-                form
-            })
-        });
-
-        const data = await res.json();
-        alert(data.message || "Ошибка");
-        tg.close();
+    tg?.onEvent("mainButtonClicked", () => {
+        tg.sendData("ping");
     });
+
+    document.getElementById("send").onclick = () => {
+        tg?.sendData("ping");
+    };
+
+    console.log("✅ Telegram context:", tg);
 </script>
 </body>
 </html>
